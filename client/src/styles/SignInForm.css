@@ -1,0 +1,38 @@
+.sign-in-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px; /* Space between title and form */
+}
+.form-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.sign-in-form div {
+    width: 15rem;
+    margin-bottom: 15px; /* Space between form fields */
+}
+
+.sign-in-form label {
+    margin-right: 10px; /* Space between label and input */
+}
+
+.sign-in-form input {
+    padding: 8px 15px;
+    width: 15rem;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+}
+.sign-in-form button{
+    width: 10rem;
+}
+/* SignInForm.css */
+
+/* Remove the focus outline and border */
+.sign-in-form input:focus {
+    outline: none; /* Remove the default outline */
+    box-shadow: none; /* Remove the default box shadow */
+    border: 1px solid transparent; /* Set border to transparent */
+}
