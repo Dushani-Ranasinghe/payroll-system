@@ -1,11 +1,10 @@
+import LandingPage from "./pages/LandingPage"
+import "./styles/global.css"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-       <h1> Payroll app</h1> 
-        
-      </header>
+      <LandingPage/>
     </div>
   );
 }
