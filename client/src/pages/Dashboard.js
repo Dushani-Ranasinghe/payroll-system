@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import React from "react";
+import { Link, Outlet } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles/Dashboard.css";
 
@@ -13,19 +13,19 @@ const Dashboard = ({ handleLogout }) => {
           </a>
           <ul className="dashboard-nav">
             <li className="dashboard-nav-item">
-              <Link to="/dashboard" className="dashboard-nav-link">
+              <Link to="" className="dashboard-nav-link">
                 <i className="dashboard-nav-icon bi-house"></i>
                 <span className="dashboard-nav-text">Dashboard</span>
               </Link>
             </li>
             <li className="dashboard-nav-item">
-              <Link to="/employee" className="dashboard-nav-link">
+              <Link to="employees" className="dashboard-nav-link">
                 <i className="dashboard-nav-icon bi-people"></i>
                 <span className="dashboard-nav-text">Employees</span>
               </Link>
             </li>
             <li className="dashboard-nav-item">
-              <Link to="/employee" className="dashboard-nav-link">
+              <Link to="salaries" className="dashboard-nav-link">
                 <i className="dashboard-nav-icon bi-cash-coin"></i>
                 <span className="dashboard-nav-text">Payroll</span>
               </Link>
