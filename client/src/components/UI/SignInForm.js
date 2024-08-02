@@ -1,23 +1,27 @@
 import React, { useState } from "react";
 import "../../styles/SignInForm.css";
 import axios from "axios";
-import {useNavigate} from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
 const SignInForm = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
   });
-  const navigate = useNavigate()
+  const [error, setError] = useState(null)
+  const navigate = useNavigate();
+  axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:3000/auth/adminlogin",values)
-      .then(
-        result => {
-          navigate('dashboard')
+      .post("http://localhost:3000/auth/adminlogin", values)
+      .then((result) => {
+        if (result.data.loginStatus) {
+          navigate("/dashboard");
+        } else {
+          setError(result.data.Error);
         }
-      )
+      })
       .catch((err) => console.log(err));
   };
   return (
@@ -43,6 +47,9 @@ const SignInForm = () => {
           required
           onChange={(e) => setValues({ ...values, password: e.target.value })}
         />
+      </div>
+      <div className="error-msg-container">
+       <p className="error-msg"> * {error && error}</p>
       </div>
       <button type="submit">Log In</button>
     </form>

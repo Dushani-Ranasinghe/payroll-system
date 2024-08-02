@@ -36,3 +36,8 @@
     box-shadow: none; /* Remove the default box shadow */
     border: 1px solid transparent; /* Set border to transparent */
 }
+
+.error-msg{
+    color: red;
+    font-size: 12px;
+}

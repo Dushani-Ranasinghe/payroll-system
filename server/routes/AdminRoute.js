@@ -10,15 +10,31 @@ router.post("/adminlogin", (req, res) => {
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  const sql = "SELECT * FROM admin WHERE email = ? AND password = ?";
-  con.query(sql, [req.body.email, req.body.password], (err, result) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  const checkEmailSql = "SELECT * FROM admin WHERE email = ?";
+  con.query(checkEmailSql, [email], (err, result) => {
     if (err) {
       console.error("Query error:", err);
       return res.json({ loginStatus: false, Error: "Query error" });
     }
-    console.log("Query result:", result);
-    if (result.length > 0) {
-      const email = result[0].email;
+
+    if (result.length === 0) {
+      return res.json({ loginStatus: false, Error: "Email not registered" });
+    }
+
+    const checkPasswordSql = "SELECT * FROM admin WHERE email = ? AND password = ?";
+    con.query(checkPasswordSql, [email, password], (err, result) => {
+      if (err) {
+        console.error("Query error:", err);
+        return res.json({ loginStatus: false, Error: "Query error" });
+      }
+
+      if (result.length === 0) {
+        return res.json({ loginStatus: false, Error: "Incorrect password" });
+      }
+
       const token = jwt.sign(
         {
           role: "admin",
@@ -29,9 +45,7 @@ router.post("/adminlogin", (req, res) => {
       );
       res.cookie("token", token);
       return res.json({ loginStatus: true });
-    } else {
-      return res.json({ loginStatus: false, Error: "Wrong email or password" });
-    }
+    });
   });
 });
 
