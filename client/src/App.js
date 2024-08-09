@@ -6,7 +6,7 @@ import Home from "./pages/Home";
 import Employees from "./pages/Employees";
 import Salaries from "./pages/Salaries";
 import Profile from "./pages/Profile";
-import "./styles/global.css";
+import "./App.css";
 
 function App() {
   return (

@@ -1,7 +1,7 @@
 .employee-container{
-  background-color: white;
+  background-color: var(--background-color-white);
   padding: 1rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border: 1.5px solid var(--border-color-light);
   border-radius: 15px;
 }
 .navbar {
@@ -19,21 +19,3 @@
     padding: 8px 12px;
     margin-left: 10px;
   }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 12px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
-
-  }
-  
-  th {
-    background-color: #f2f2f2;
-  }
-  
