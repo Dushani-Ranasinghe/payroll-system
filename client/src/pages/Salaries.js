@@ -3,8 +3,48 @@ import "../styles/Salaries.css";
 
 // Sample salary data
 const initialSalaries = [
-  { id: 1, name: "John Doe", position: "Machine operator", shift: "full-time", month: "August", year: 2024, basic: 21500, noPay: 2, noPayAmount: 860, transport: 2000, attendance: 1000, otHours: 29, otRate: 127, grossSalary: 0, epfEmployee: 0, epfEmployer: 0, etf: 0, netSalary: 0, isEligibleForEPFETF: true },
-  { id: 2, name: "Jane Smith", position: "Helper", shift: "part-time", month: "August", year: 2024, basic: 17000, noPay: 2.5, noPayAmount: 680, transport: 2000, attendance: 1000, otHours: 32, otRate: 127, grossSalary: 0, epfEmployee: 0, epfEmployer: 0, etf: 0, netSalary: 0, isEligibleForEPFETF: false },
+  {
+    id: 1,
+    name: "John Doe",
+    position: "Machine operator",
+    shift: "full-time",
+    month: "August",
+    year: 2024,
+    basic: 21500,
+    noPay: 2,
+    noPayAmount: 860,
+    transport: 2000,
+    attendance: 1000,
+    otHours: 29,
+    otRate: 127,
+    grossSalary: 0,
+    epfEmployee: 0,
+    epfEmployer: 0,
+    etf: 0,
+    netSalary: 0,
+    isEligibleForEPFETF: true,
+  },
+  {
+    id: 2,
+    name: "Jane Smith",
+    position: "Helper",
+    shift: "part-time",
+    month: "August",
+    year: 2024,
+    basic: 17000,
+    noPay: 2.5,
+    noPayAmount: 680,
+    transport: 2000,
+    attendance: 1000,
+    otHours: 32,
+    otRate: 127,
+    grossSalary: 0,
+    epfEmployee: 0,
+    epfEmployer: 0,
+    etf: 0,
+    netSalary: 0,
+    isEligibleForEPFETF: false,
+  },
   // Add more salary data as needed
 ];
 
@@ -17,7 +57,16 @@ const Salaries = () => {
   const [selectedYear, setSelectedYear] = useState(2024);
 
   const calculateSalary = (salary) => {
-    const { basic, noPay, noPayAmount, transport, attendance, otHours, otRate, isEligibleForEPFETF } = salary;
+    const {
+      basic,
+      noPay,
+      noPayAmount,
+      transport,
+      attendance,
+      otHours,
+      otRate,
+      isEligibleForEPFETF,
+    } = salary;
 
     // Calculate No Pay Deduction
     const noPayDeduction = noPay * noPayAmount;
@@ -50,25 +99,42 @@ const Salaries = () => {
   const handleUpdate = (id) => {
     // Logic to update a salary entry
   };
+  const handleView = (id) => {
+    // Logic to update a salary entry
+  };
 
   // Filter and calculate salaries based on the selected month and year
-  const filteredSalaries = salaries.map((salary) => {
-    const calculatedValues = calculateSalary(salary);
-    return { ...salary, ...calculatedValues };
-  }).filter((salary) => {
-    const matchesSearch = salary.name.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesPosition = selectedPosition === "All" || salary.position === selectedPosition;
-    const matchesShift = selectedShift === "All" || salary.shift === selectedShift;
-    const matchesMonth = salary.month === selectedMonth;
-    const matchesYear = salary.year === selectedYear;
-    return matchesSearch && matchesPosition && matchesShift && matchesMonth && matchesYear;
-  });
+  const filteredSalaries = salaries
+    .map((salary) => {
+      const calculatedValues = calculateSalary(salary);
+      return { ...salary, ...calculatedValues };
+    })
+    .filter((salary) => {
+      const matchesSearch = salary.name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+      const matchesPosition =
+        selectedPosition === "All" || salary.position === selectedPosition;
+      const matchesShift =
+        selectedShift === "All" || salary.shift === selectedShift;
+      const matchesMonth = salary.month === selectedMonth;
+      const matchesYear = salary.year === selectedYear;
+      return (
+        matchesSearch &&
+        matchesPosition &&
+        matchesShift &&
+        matchesMonth &&
+        matchesYear
+      );
+    });
 
   return (
     <div className="salary-container">
-      <h1>Salaries for {selectedMonth} {selectedYear}</h1>
+      <h1>
+        Salaries for {selectedMonth} {selectedYear}
+      </h1>
       <div className="navbar">
-      <div className="search-input-container">
+        <div className="search-input-container">
           <i className="uil uil-search search-icon"></i>
           <input
             type="text"
@@ -77,19 +143,28 @@ const Salaries = () => {
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
-        <select value={selectedPosition} onChange={(e) => setSelectedPosition(e.target.value)}>
+        <select
+          value={selectedPosition}
+          onChange={(e) => setSelectedPosition(e.target.value)}
+        >
           <option value="All">All Positions</option>
           <option value="Machine operator">Machine operator</option>
           <option value="Helper">Helper</option>
           {/* Add more positions as needed */}
         </select>
-        <select value={selectedShift} onChange={(e) => setSelectedShift(e.target.value)}>
+        <select
+          value={selectedShift}
+          onChange={(e) => setSelectedShift(e.target.value)}
+        >
           <option value="All">All Shifts</option>
           <option value="full-time">Full-Time</option>
           <option value="part-time">Part-Time</option>
           {/* Add more shifts as needed */}
         </select>
-        <select value={selectedMonth} onChange={(e) => setSelectedMonth(e.target.value)}>
+        <select
+          value={selectedMonth}
+          onChange={(e) => setSelectedMonth(e.target.value)}
+        >
           <option value="January">January</option>
           <option value="February">February</option>
           <option value="March">March</option>
@@ -103,7 +178,10 @@ const Salaries = () => {
           <option value="November">November</option>
           <option value="December">December</option>
         </select>
-        <select value={selectedYear} onChange={(e) => setSelectedYear(e.target.value)}>
+        <select
+          value={selectedYear}
+          onChange={(e) => setSelectedYear(e.target.value)}
+        >
           <option value={2024}>2024</option>
           <option value={2023}>2023</option>
           <option value={2022}>2022</option>
@@ -139,20 +217,39 @@ const Salaries = () => {
               <td>{salary.name}</td>
               <td>{salary.position}</td>
               <td>{salary.shift}</td>
-              <td>{salary.isEligibleForEPFETF ? "Eligible" : "Not Eligible"}</td>
+              <td>
+                {salary.isEligibleForEPFETF ? "Eligible" : "Not Eligible"}
+              </td>
               <td>{salary.basic}</td>
-              <td>{salary.noPay} x {salary.noPayAmount}</td>
+              <td>
+                {salary.noPay} x {salary.noPayAmount}
+              </td>
               <td>{salary.transport}</td>
               <td>{salary.attendance}</td>
-              <td>{salary.otHours} x {salary.otRate}</td>
+              <td>
+                {salary.otHours} x {salary.otRate}
+              </td>
               <td>{salary.grossSalary.toFixed(2)}</td>
               <td>{salary.epfEmployee.toFixed(2)}</td>
               <td>{salary.epfEmployer.toFixed(2)}</td>
               <td>{salary.etf.toFixed(2)}</td>
               <td>{salary.netSalary.toFixed(2)}</td>
-              <td>
-                <button onClick={() => handleUpdate(salary.id)}>Update</button>
-                <button onClick={() => handleDelete(salary.id)}>Delete</button>
+              <td className="action-column">
+                <i
+                  className="uil uil-eye view-icon"
+                  onClick={() => handleView(salary.id)}
+                  title="View"
+                ></i>
+                <i
+                  className="uil uil-edit edit-icon"
+                  onClick={() => handleUpdate(salary.id)}
+                  title="Edit"
+                ></i>
+                <i
+                  className="uil uil-trash-alt delete-icon"
+                  onClick={() => handleDelete(salary.id)}
+                  title="Delete"
+                ></i>
               </td>
             </tr>
           ))}

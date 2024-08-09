@@ -47,6 +47,9 @@ const Employees = () => {
   const handleUpdate = (id) => {
     // Logic to update an employee
   };
+  const handleView = (id) => {
+    // Logic to update an employee
+  };
 
   // Filter employees based on search term, position, and shift
   const filteredEmployees = employees.filter((emp) => {
@@ -123,9 +126,22 @@ const Employees = () => {
               <td>{emp.documents}</td>
               <td>{emp.start_date}</td>
               <td>{emp.end_date}</td>
-              <td>
-                <button onClick={() => handleUpdate(emp.id)}>Update</button>
-                <button onClick={() => handleDelete(emp.id)}>Delete</button>
+              <td className="action-column">
+                <i
+                  className="uil uil-eye view-icon"
+                  onClick={() => handleView(emp.id)}
+                  title="View"
+                ></i>
+                <i
+                  className="uil uil-edit edit-icon"
+                  onClick={() => handleUpdate(emp.id)}
+                  title="Edit"
+                ></i>
+                <i
+                  className="uil uil-trash-alt delete-icon"
+                  onClick={() => handleDelete(emp.id)}
+                  title="Delete"
+                ></i>
               </td>
             </tr>
           ))}

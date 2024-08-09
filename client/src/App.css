@@ -5,6 +5,7 @@
   --primary-black-color: #0d0d15;
   --primary-white-color: #ffffff;
   --primary-gray-color: #f5f5f5;
+  --primary-blue-color:#007bff;
 
   /* Secondary Colors */
   --secondary-color-light: #f99b9b;
@@ -153,3 +154,35 @@ a:hover {
   font-size: 18px; /* Adjust icon size */
   pointer-events: none; /* Ensure the icon does not interfere with typing */
 }
+td i {
+  cursor: pointer; /* Make icons clickable */
+  font-size: 20px; /* Adjust the size of the icons */
+  margin: 0 5px; /* Space out the icons */
+  color: var(--text-color-light); /* Adjust the color */
+  transition: color 0.3s ease; /* Smooth transition on hover */
+}
+
+td i:hover {
+  color: var(--primary-black-color); /* Change color on hover */
+}
+.action-column {
+  white-space: nowrap;
+}
+.action-column i {
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+.action-column i:nth-child(1):hover {
+    color: var(--accent-color-green);
+    transform: scale(1.2);
+  }
+  
+  .action-column i:nth-child(2):hover {
+    color: var(--primary-blue-color);
+    transform: scale(1.2);
+  }
+  
+  .action-column i:nth-child(3):hover {
+    color: var(--primary-red-color);
+    transform: scale(1.2);
+  }
+  
