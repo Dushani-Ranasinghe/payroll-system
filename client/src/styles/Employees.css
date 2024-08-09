@@ -1,3 +1,9 @@
+.employee-container{
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
 .navbar {
     display: flex;
     justify-content: space-between;

@@ -9,8 +9,8 @@
 
 .dashboard-sidebar {
     width: 200px;
-    background-color: white;
-    color: #cb5454;
+    background-color: #cb5454;
+    color:white ;
     min-height: 100vh;
     padding: 10px 20px;
     display: flex;
@@ -22,7 +22,7 @@
 .dashboard-header {
     margin: 1rem auto;
     font-weight: bold;
-    color: #cb5454;
+    color: white;
     font-size: 1.5rem;
     text-decoration: none !important;
 }
@@ -38,7 +38,7 @@
 }
 
 .dashboard-nav-link {
-    color: #cb5454;
+    color: white;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -47,8 +47,8 @@
 }
 
 .dashboard-nav-link:hover {
-    background-color: #cb5454;
-    color: white;
+    background-color: white;
+    color: #cb5454;
     border-radius: 10px;
     text-decoration: none;
 }
@@ -69,9 +69,8 @@
 
 .dashboard-header-bar {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     padding: 10px;
-    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
 .dashboard-title {

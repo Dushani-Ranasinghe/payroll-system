@@ -35,7 +35,7 @@ const Employees = () => {
   });
 
   return (
-    <div>
+    <div className="employee-container">
       <h1>Employees</h1>
       <div className="navbar">
         <input
